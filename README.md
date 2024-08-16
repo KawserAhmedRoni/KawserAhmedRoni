@@ -1,5 +1,5 @@
 <img width="100%" src="https://cdn.dribbble.com/userupload/16110610/file/original-ad4a6b1dcb1f453d0156f72f2f6920aa.jpg?resize=1600x914">
-<h1 align="center">Hi!, I'm Kawser Ahmed Roni</h1>
+<h1 align="center"><b>Hi!</b> <br> I'm Kawser Ahmed Roni</h1>
 <h4 align="center">Skilled and dedicated Frontend Developer with 3years+ of experience in building dynamic, responsive, and user-centric websites and applications. Proficient in HTML, CSS, Sass(BEM), Bootstrap, Tailwind, JavaScript, jQuery, Gsap, React.js, Next.js. Experienced in crafting intuitive user interfaces, optimizing performance, and ensuring cross-browser compatibility. Passionate about web development, with a keen eye for detail and a commitment to delivering high-quality code.</h4>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=kawserahmedrony&label=Profile%20views&color=0e75b6&style=flat" alt="kawserahmedrony" /> </p>
