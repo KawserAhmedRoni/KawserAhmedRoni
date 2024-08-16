@@ -1,4 +1,4 @@
-![MasterHead](https://i.pinimg.com/564x/d1/35/56/d13556ec053cffc2410a682ee33436d6.jpg)
+![MasterHead]([https://i.pinimg.com/564x/d1/35/56/d13556ec053cffc2410a682ee33436d6.jpg](https://cdn.dribbble.com/userupload/16110610/file/original-ad4a6b1dcb1f453d0156f72f2f6920aa.jpg?resize=752x))
 <h1 align="center">Hi!, I'm Kawser Ahmed Roni</h1>
 <h4 align="center">Skilled and dedicated Frontend Developer with 3years+ of experience in building dynamic, responsive, and user-centric websites and applications. Proficient in HTML, CSS, Sass(BEM), Bootstrap, Tailwind, JavaScript, jQuery, Gsap, React.js, Next.js. Experienced in crafting intuitive user interfaces, optimizing performance, and ensuring cross-browser compatibility. Passionate about web development, with a keen eye for detail and a commitment to delivering high-quality code.</h4>
 
