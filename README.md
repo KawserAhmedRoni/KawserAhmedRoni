@@ -1,7 +1,7 @@
-[![MasterHead](https://1.bp.blogspot.com/-7A4WynwLsM...)]([https://rishavchanda.io]([https://scontent.fdac14-1.fna.fbcdn.net/v/t39.30808-6/427941881_1984596995267278_660423841946561105_n.jpg?stp=dst-jpg_s960x960&_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEy0anEOLv_eKA0Izo4yYIidKuv2b98Bet0q6_Zv3wF6-WDxjUsPUcbK2wnrv_k-njgXNRsQbZuy2WOSqGWzjXx&_nc_ohc=xi5wtkY64uIQ7kNvgGizkFo&_nc_ht=scontent.fdac14-1.fna&oh=00_AYCFvGhnaxFwLRwl40lzpqE36owGG2G1e_17HMcby_b7Bg&oe=66C51030)](https://scontent.fdac14-1.fna.fbcdn.net/v/t39.30808-6/427941881_1984596995267278_660423841946561105_n.jpg?stp=dst-jpg_s960x960&_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEy0anEOLv_eKA0Izo4yYIidKuv2b98Bet0q6_Zv3wF6-WDxjUsPUcbK2wnrv_k-njgXNRsQbZuy2WOSqGWzjXx&_nc_ohc=xi5wtkY64uIQ7kNvgGizkFo&_nc_ht=scontent.fdac14-1.fna&oh=00_AYCFvGhnaxFwLRwl40lzpqE36owGG2G1e_17HMcby_b7Bg&oe=66C51030))
+[![MasterHead](https://i.pinimg.com/564x/d1/35/56/d13556ec053cffc2410a682ee33436d6.jpg)
 <h1 align="center">Hi 👋, I'm Kawser Ahmed Roni</h1>
-<h3 align="center">A passionate frontend developer from Bangladesh.</h3>
-<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/116207...">
+<h3 align="center">Skilled and dedicated Frontend Developer with 3years+ of experience in building dynamic, responsive, and user-centric websites and applications. Proficient in HTML, CSS, Sass(BEM), Bootstrap, Tailwind, JavaScript, jQuery, Gsap, React.js, Next.js. Experienced in crafting intuitive user interfaces, optimizing performance, and ensuring cross-browser compatibility. Passionate about web development, with a keen eye for detail and a commitment to delivering high-quality code.</h3>
+<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/media/7ed7d5ca074b48b328150e5a231e8d1f.gif">
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=kawserahmedrony&label=Profile%20views&color=0e75b6&style=flat" alt="kawserahmedrony" /> </p>
 
