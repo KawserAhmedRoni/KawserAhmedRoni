@@ -113,13 +113,13 @@ export default function ContactForm() {
               
               <div className="space-y-4" id="social-links-list">
                 <a 
-                  href="mailto:alexrony123454321@gmail.com"
+                  href="mailto:kawserahmedroni.dev@gmail.com"
                   className="flex items-center justify-between p-3.5 bg-cyber-gray-900 border border-cyber-gray-850 hover:border-cyber-blue/50 text-gray-300 hover:text-white rounded transition-all group"
                   id="link-email"
                 >
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-cyber-blue" />
-                    <span className="text-xs font-mono">alexrony123454321@gmail.com</span>
+                    <span className="text-xs font-mono">kawserahmedroni.dev@gmail.com</span>
                   </div>
                   <span className="text-[10px] font-mono text-gray-500 group-hover:text-cyber-blue">[SEND]</span>
                 </a>

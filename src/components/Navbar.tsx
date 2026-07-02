@@ -294,7 +294,7 @@ export default function Navbar() {
               <div className="p-5 border-t border-cyber-gray-900 bg-cyber-gray-900/20 space-y-4">
                 <div className="flex justify-center space-x-3">
                   <a 
-                    href="mailto:alexrony123454321@gmail.com" 
+                    href="mailto:kawserahmedroni.dev@gmail.com" 
                     className="p-2.5 rounded bg-cyber-gray-900 border border-cyber-gray-800 hover:border-cyber-blue/40 text-gray-400 hover:text-cyber-blue transition-all"
                     aria-label="Email"
                   >

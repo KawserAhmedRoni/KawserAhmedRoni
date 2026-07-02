@@ -10,7 +10,7 @@
   <a href="https://linkedin.com/in/kawser-ahmed-roni-91252b316" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="https://github.com/KawserAhmedRoni" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
   <a href="https://www.facebook.com/kawserahmedroni.dev" target="_blank"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" /></a>
-  <a href="mailto:kawserahmedroni51@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+  <a href="mailto:kawserahmedroni.dev@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 </p>
 
 <p align="center">
@@ -73,7 +73,7 @@ Dedicated and system-focused **Senior Full-Stack Developer & Technical Lead** wi
 
 ### 📬 Let's Connect!
 
-- **Email:** kawserahmedroni51@gmail.com
+- **Email:** kawserahmedroni.dev@gmail.com
 - **LinkedIn:** [linkedin.com/in/kawser-ahmed-roni-91252b316](https://linkedin.com/in/kawser-ahmed-roni-91252b316)
 - **Facebook:** [facebook.com/kawserahmedroni.dev](https://www.facebook.com/kawserahmedroni.dev)
 - **Portfolio App:** Run `npm run dev` to launch the local telemetry cockpit!

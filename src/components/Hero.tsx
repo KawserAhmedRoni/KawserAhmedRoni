@@ -463,7 +463,7 @@ export default function Hero() {
                       </a>
 
                       <a
-                        href="mailto:kawserahmedroni51@gmail.com"
+                        href="mailto:kawserahmedroni.dev@gmail.com"
                         className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-pink/50 hover:bg-cyber-pink/5 p-4 rounded transition-all group/link"
                       >
                         <Mail className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-pink transition-colors mb-2" />
