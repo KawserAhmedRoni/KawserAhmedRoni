@@ -95,15 +95,22 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Brand / Logo */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => handleScrollTo('hero')} id="brand-logo">
+          <div className="group flex items-center space-x-3 cursor-pointer" onClick={() => handleScrollTo('hero')} id="brand-logo">
             <div className="relative flex items-center justify-center w-9 h-9 border border-cyber-blue bg-cyber-gray-900 rounded overflow-hidden">
               <img 
                 src="/images/rony.png" 
                 alt="Roni Avatar" 
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100";
                 }}
+              />
+              {/* Dynamic laser scanner line on hover of logo */}
+              <motion.div 
+                initial={{ top: "0%" }}
+                animate={{ top: ["0%", "100%", "0%"] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                className="absolute left-0 w-full h-[1px] bg-cyber-blue/70 shadow-[0_0_6px_#00f0ff] z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
               <div className="absolute inset-0 bg-cyber-blue/10 pointer-events-none" />
             </div>
