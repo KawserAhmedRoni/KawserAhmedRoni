@@ -224,17 +224,6 @@ export default function Hero() {
                   <span className="hidden xs:inline">BIOMETRIC_SCAN</span>
                 </button>
                 <button 
-                  onClick={() => setActiveRightTab('terminal')}
-                  className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
-                    activeRightTab === 'terminal' 
-                      ? 'bg-cyber-emerald/10 border border-cyber-emerald/35 text-white font-semibold' 
-                      : 'text-gray-500 hover:text-gray-350 hover:bg-cyber-gray-950/40 border border-transparent'
-                  }`}
-                >
-                  <Terminal className="w-3.5 h-3.5 text-cyber-emerald" />
-                  <span className="hidden xs:inline">RONI_SHELL</span>
-                </button>
-                <button 
                   onClick={() => setActiveRightTab('social')}
                   className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
                     activeRightTab === 'social' 
@@ -244,6 +233,17 @@ export default function Hero() {
                 >
                   <Share2 className="w-3.5 h-3.5 text-cyber-violet" />
                   <span className="hidden xs:inline">SOCIAL_NET</span>
+                </button>
+                <button 
+                  onClick={() => setActiveRightTab('terminal')}
+                  className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
+                    activeRightTab === 'terminal' 
+                      ? 'bg-cyber-emerald/10 border border-cyber-emerald/35 text-white font-semibold' 
+                      : 'text-gray-500 hover:text-gray-350 hover:bg-cyber-gray-950/40 border border-transparent'
+                  }`}
+                >
+                  <Terminal className="w-3.5 h-3.5 text-cyber-emerald" />
+                  <span className="hidden xs:inline">RONI_SHELL</span>
                 </button>
               </div>
 
@@ -276,17 +276,17 @@ export default function Hero() {
                     className="p-5 flex flex-col space-y-4"
                   >
                     {/* Portrait Scan Canvas */}
-                    <div className="relative w-full h-[220px] rounded-lg border border-cyber-blue/40 bg-cyber-dark/60 overflow-hidden group shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]" id="hologram-portrait-canvas">
+                    <div className="relative aspect-square w-full max-w-[280px] mx-auto rounded-lg border border-cyber-blue/40 bg-cyber-dark/60 overflow-hidden group shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]" id="hologram-portrait-canvas">
                       {/* Grid overlay */}
                       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
                       <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-transparent opacity-80 pointer-events-none" />
                       
                       {/* Dynamic laser scanner line */}
                       <motion.div 
-                        initial={{ y: 0 }}
-                        animate={{ y: [0, 220, 0] }}
+                        initial={{ top: "0%" }}
+                        animate={{ top: ["0%", "100%", "0%"] }}
                         transition={{ repeat: Infinity, duration: 3.5, ease: "linear" }}
-                        className="absolute top-0 left-0 w-full h-[2px] bg-cyber-blue/70 shadow-[0_0_12px_#00f0ff] z-10 pointer-events-none"
+                        className="absolute left-0 w-full h-[2px] bg-cyber-blue/70 shadow-[0_0_12px_#00f0ff] z-10 pointer-events-none"
                       />
 
                       {/* Diagnostic HUD indicators */}
@@ -450,7 +450,7 @@ export default function Hero() {
                       </a>
 
                       <a
-                        href="https://fb.com/alex.rony.33"
+                        href="https://www.facebook.com/kawserahmedroni.dev"
                         target="_blank"
                         rel="noreferrer"
                         className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-emerald/50 hover:bg-cyber-emerald/5 p-4 rounded transition-all group/link"
