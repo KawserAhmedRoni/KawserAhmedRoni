@@ -290,13 +290,13 @@ export default function Hero() {
                       />
 
                       {/* Diagnostic HUD indicators */}
-                      <div className="absolute top-3 left-3 flex flex-col space-y-1 z-15 font-mono text-[8px] text-cyber-blue/80 bg-cyber-dark/45 border border-cyber-blue/15 p-1.5 rounded backdrop-blur-sm">
+                      <div className="absolute top-3 left-3 flex flex-col space-y-1 z-15 font-mono text-[8px] text-cyber-blue/80 bg-cyber-dark/45 border border-cyber-blue/15 p-1.5 rounded backdrop-blur-sm group-hover:opacity-0 transition-opacity duration-300">
                         <span>SYS_RECON: ENABLED</span>
                         <span>TARGET_NAME: KAWSER Ahmed RONI</span>
                         <span>LATENCY_STABILITY: STABLE</span>
                       </div>
 
-                      <div className="absolute bottom-3 right-3 flex flex-col space-y-0.5 z-15 font-mono text-[8px] text-cyber-emerald bg-cyber-dark/45 border border-cyber-emerald/15 p-1.5 rounded backdrop-blur-sm text-right">
+                      <div className="absolute bottom-3 right-3 flex flex-col space-y-0.5 z-15 font-mono text-[8px] text-cyber-emerald bg-cyber-dark/45 border border-cyber-emerald/15 p-1.5 rounded backdrop-blur-sm text-right group-hover:opacity-0 transition-opacity duration-300">
                         <span>SYS_LOC: 23.8103° N, 90.4125° E</span>
                         <span>DHAKA_NODE_STABLE</span>
                       </div>
