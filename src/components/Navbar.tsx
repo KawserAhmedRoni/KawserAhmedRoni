@@ -97,8 +97,15 @@ export default function Navbar() {
           {/* Brand / Logo */}
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => handleScrollTo('hero')} id="brand-logo">
             <div className="relative flex items-center justify-center w-9 h-9 border border-cyber-blue bg-cyber-gray-900 rounded overflow-hidden">
-              <span className="font-mono text-xs font-bold text-cyber-blue">KA</span>
-              <div className="absolute inset-0 bg-cyber-blue/10 animate-pulse" />
+              <img 
+                src="/images/rony.png" 
+                alt="Roni Avatar" 
+                className="w-full h-full object-cover object-top"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=100&h=100";
+                }}
+              />
+              <div className="absolute inset-0 bg-cyber-blue/10 pointer-events-none" />
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
