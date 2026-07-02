@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Terminal, ArrowRight, Download, FileText, CheckCircle2, User, Cpu, ShieldCheck, RefreshCw } from 'lucide-react';
+import { Terminal, ArrowRight, Download, FileText, CheckCircle2, User, Cpu, ShieldCheck, RefreshCw, Share2, Github, Linkedin, Facebook, Mail } from 'lucide-react';
 import { HERO_DATA } from '../data';
 
 export default function Hero() {
-  const [activeRightTab, setActiveRightTab] = useState<'scan' | 'terminal'>('scan');
+  const [activeRightTab, setActiveRightTab] = useState<'scan' | 'terminal' | 'social'>('scan');
   const [terminalHistory, setTerminalHistory] = useState<string[]>([
     'Initializing secure connection to kawser_roni_core...',
     'System status: 100% operational.',
@@ -92,12 +92,9 @@ export default function Hero() {
   };
 
   const handleDownloadResume = () => {
-    // Elegant simulated download behavior
     const link = document.createElement('a');
-    link.href = '#';
-    const blob = new Blob([`Kawser Ahmed Roni - Senior Full-Stack Developer Resume\n8+ Years Experience | 90+ Completed Projects\nMediaSoft Core Developer`], { type: 'text/plain' });
-    link.href = URL.createObjectURL(blob);
-    link.download = 'Kawser_Ahmed_Roni_Resume.txt';
+    link.href = '/cv/cv.pdf';
+    link.download = 'Kawser_Ahmed_Roni_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -105,7 +102,7 @@ export default function Hero() {
     setTerminalHistory(prev => [
       ...prev,
       ' ',
-      '>> [SYSTEM INFO]: Downloading Kawser_Ahmed_Roni_Resume.pdf (Simulated compilation complete)...'
+      '>> [SYSTEM INFO]: Requesting local target node download at "/cv/cv.pdf"...'
     ]);
   };
 
@@ -237,13 +234,31 @@ export default function Hero() {
                   <Terminal className="w-3.5 h-3.5 text-cyber-emerald" />
                   <span className="hidden xs:inline">RONI_SHELL</span>
                 </button>
+                <button 
+                  onClick={() => setActiveRightTab('social')}
+                  className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
+                    activeRightTab === 'social' 
+                      ? 'bg-cyber-violet/10 border border-cyber-violet/35 text-white font-semibold' 
+                      : 'text-gray-500 hover:text-gray-350 hover:bg-cyber-gray-950/40 border border-transparent'
+                  }`}
+                >
+                  <Share2 className="w-3.5 h-3.5 text-cyber-violet" />
+                  <span className="hidden xs:inline">SOCIAL_NET</span>
+                </button>
               </div>
 
               {/* Status Indicator Pill */}
               <div className="flex items-center space-x-1.5">
-                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${activeRightTab === 'scan' ? 'bg-cyber-blue' : 'bg-cyber-emerald'}`} />
-                <span className={`font-mono text-[9px] uppercase font-bold tracking-wider ${activeRightTab === 'scan' ? 'text-cyber-blue' : 'text-cyber-emerald'}`}>
-                  {activeRightTab === 'scan' ? 'LIVE_PORTRAIT' : 'CLI_ONLINE'}
+                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                  activeRightTab === 'scan' ? 'bg-cyber-blue' : 
+                  activeRightTab === 'terminal' ? 'bg-cyber-emerald' : 'bg-cyber-violet'
+                }`} />
+                <span className={`font-mono text-[9px] uppercase font-bold tracking-wider ${
+                  activeRightTab === 'scan' ? 'text-cyber-blue' : 
+                  activeRightTab === 'terminal' ? 'text-cyber-emerald' : 'text-cyber-violet'
+                }`}>
+                  {activeRightTab === 'scan' ? 'LIVE_PORTRAIT' : 
+                   activeRightTab === 'terminal' ? 'CLI_ONLINE' : 'NET_LINKS'}
                 </span>
               </div>
             </div>
@@ -288,10 +303,13 @@ export default function Hero() {
 
                       {/* Actual developer portrait */}
                       <img 
-                        src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400" 
+                        src="/images/rony.png" 
                         alt="Kawser Ahmed Roni - Senior Systems Engineer"
                         className="w-full h-full object-cover object-top filter grayscale contrast-115 brightness-95 group-hover:grayscale-0 transition-all duration-700 scale-102 group-hover:scale-105"
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400";
+                        }}
                       />
 
                       {/* Custom aesthetic viewport crosshairs */}
@@ -327,7 +345,7 @@ export default function Hero() {
                       </div>
                     </div>
                   </motion.div>
-                ) : (
+                ) : activeRightTab === 'terminal' ? (
                   <motion.div
                     key="terminal-shell-view"
                     initial={{ opacity: 0, scale: 0.98 }}
@@ -378,6 +396,82 @@ export default function Hero() {
                         className="flex-1 bg-transparent border-none outline-none font-mono text-xs text-cyber-emerald placeholder-gray-650"
                         id="terminal-input"
                       />
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="social-links-view"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.3 }}
+                    className="p-5 flex flex-col space-y-4"
+                  >
+                    {/* Social Hub Header HUD */}
+                    <div className="relative w-full h-[100px] rounded border border-cyber-violet/30 bg-cyber-dark/40 overflow-hidden group flex flex-col justify-center items-center">
+                      <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
+                      <Share2 className="w-8 h-8 text-cyber-violet animate-pulse mb-1.5 z-10" />
+                      <span className="font-mono text-[10px] text-cyber-violet tracking-widest uppercase z-10">COMMUNICATION_CHANNELS</span>
+                      <span className="font-mono text-[8px] text-gray-500 z-10">SECURE TARGET NODE CONNECTIVITY</span>
+                      
+                      {/* Crosshairs */}
+                      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyber-violet" />
+                      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyber-violet" />
+                      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-cyber-violet" />
+                      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyber-violet" />
+                    </div>
+
+                    {/* Social Grid */}
+                    <div className="grid grid-cols-2 gap-3.5">
+                      <a
+                        href="https://github.com/KawserAhmedRoni"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-blue/50 hover:bg-cyber-blue/5 p-4 rounded transition-all group/link"
+                      >
+                        <Github className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-blue transition-colors mb-2" />
+                        <div className="font-mono">
+                          <p className="text-[8px] text-gray-500 uppercase leading-none">Code Repository</p>
+                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-blue transition-colors mt-1">GitHub</p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="https://linkedin.com/in/kawser-ahmed-roni-91252b316"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-violet/50 hover:bg-cyber-violet/5 p-4 rounded transition-all group/link"
+                      >
+                        <Linkedin className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-violet transition-colors mb-2" />
+                        <div className="font-mono">
+                          <p className="text-[8px] text-gray-500 uppercase leading-none">Professional Net</p>
+                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-violet transition-colors mt-1">LinkedIn</p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="https://fb.com/alex.rony.33"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-emerald/50 hover:bg-cyber-emerald/5 p-4 rounded transition-all group/link"
+                      >
+                        <Facebook className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-emerald transition-colors mb-2" />
+                        <div className="font-mono">
+                          <p className="text-[8px] text-gray-500 uppercase leading-none">Connect Direct</p>
+                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-emerald transition-colors mt-1">Facebook</p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="mailto:kawserahmedroni51@gmail.com"
+                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-pink/50 hover:bg-cyber-pink/5 p-4 rounded transition-all group/link"
+                      >
+                        <Mail className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-pink transition-colors mb-2" />
+                        <div className="font-mono">
+                          <p className="text-[8px] text-gray-500 uppercase leading-none">Secure Mail</p>
+                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-pink transition-colors mt-1">Email</p>
+                        </div>
+                      </a>
                     </div>
                   </motion.div>
                 )}
