@@ -1,179 +1,399 @@
-import { Project, Experience, SkillCategory, Testimonial } from './types';
+import {
+  ProfileInfo,
+  SkillGroup,
+  ExperienceItem,
+  EcomProject,
+  ThemeForestProject,
+  EcosystemBrand,
+} from './types';
 
-export const HERO_DATA = {
+export const PROFILE_DATA: ProfileInfo = {
   name: 'Kawser Ahmed Roni',
-  role: 'Senior Full-Stack Developer / Architect',
-  experienceYears: 8,
-  projectsCount: 90,
-  currentCompany: 'MediaSoft (Dhaka)',
-  tagline: 'Building enterprise-grade digital systems with high-concurrency architectures, microservices, and pixel-perfect interactive frontends.',
-  ctaResume: '#resume',
-  ctaContact: '#contact'
+  role: 'Senior Full-Stack Web Developer',
+  companyName: 'Mediasoft Data Systems Limited',
+  companyUrl: 'https://mediasoftbd.com/',
+  companyLogoWhite: '/images/brands/mediasoft-logo-white.png',
+  cloudPosLogo: '/images/brands/mediasoft-logo.png',
+  location: 'Dhaka, Bangladesh',
+  experienceLabel: '~7 Years (Since 2020)',
+  projectsLabel: '95+ Live & Marketplace Projects',
+  email: 'kawserahmedroni.dev@gmail.com',
+  phone: '01518318774',
+  cvUrl: '/cv/CV_Kawser_Ahmed_Roni_Web_Developer_Mediasoft.pdf',
+  githubUrl: 'https://github.com/KawserAhmedRoni',
+  linkedinUrl: 'https://linkedin.com/in/kawser-ahmed-roni-91252b316',
+  facebookUrl: 'https://www.facebook.com/kawserahmedroni.dev',
+  themeForestUrl: 'https://themeforest.net/user/thememascot/portfolio',
+  summary:
+    'Accomplished Senior Full-Stack Web Developer with nearly 7 years of professional experience since 2020, architecting high-performance web applications, cross-platform mobile/desktop software, and enterprise e-commerce systems with Next.js, React + Vite, Laravel, Node.js, Capacitor, and Electron.',
+  availability: [
+    'Open to Full-Time Remote Opportunities',
+    'Comfortable with Night Shift (7:00 PM – 2:00 AM BD Time)',
+  ],
 };
 
-export const PROJECTS_DATA: Project[] = [
+export const KEY_HIGHLIGHTS = [
   {
-    id: 'apex-ecommerce',
-    title: 'ApexScale Enterprise E-commerce',
-    description: 'A highly scalable, multi-tenant B2B/B2C marketplace engineered to sustain high volumes of concurrent traffic with real-time inventory adjustments.',
-    category: 'E-commerce',
-    techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'Ant Design', 'Tailwind CSS', 'Docker'],
-    metrics: [
-      { label: 'Platform Uptime', value: '99.99%', description: 'Redundant microservices cluster' },
-      { label: 'Page Load Speed', value: '0.4s', description: 'Server-side rendering & Redis edge caching' },
-      { label: 'Annual GMV', value: '$15M+', description: 'Processed across 200+ partner stores' }
-    ],
-    details: [
-      'Engineered an event-driven catalog indexing architecture that reduces database stress during peak sales traffic.',
-      'Developed custom admin dashboards with Ant Design, managing thousands of products, discounts, and real-time order states.',
-      'Implemented Redis cluster caching layer that dropped average server response times from 350ms to 45ms.'
-    ],
-    liveUrl: '#apex-ecommerce-case',
-    systemFlow: ['User adds product', 'Next.js proxies to Node.js API', 'Redis checks inventory lock', 'PostgreSQL commits transaction', 'WebSockets broadcast to POS terminals']
+    label: 'EXPERIENCE',
+    value: '~7 Years',
+    detail: 'Shipping production software since 2020',
+    accent: 'cyan' as const,
   },
   {
-    id: 'logisync-wms',
-    title: 'LogiSync Warehouse Management System',
-    description: 'An automated inventory and logistics solution supporting high-speed FIFO/LIFO tracking, barcode scanning, and optimized route generation for warehouse staff.',
-    category: 'WMS',
-    techStack: ['React', 'Node.js', 'Knex.js', 'PostgreSQL', 'React Native', 'Socket.io', 'PM2'],
-    metrics: [
-      { label: 'Picking Performance', value: '+35%', description: 'Optimized item routing heuristics' },
-      { label: 'Inventory Accuracy', value: '99.8%', description: 'Eliminated double-booking sync issues' },
-      { label: 'Deployments', value: '12', description: 'Active enterprise warehouses in Dhaka' }
-    ],
-    details: [
-      'Designed a multi-threaded reconciliation queue preventing race conditions during simultaneous stock allocations.',
-      'Built a low-latency React Native companion app for wireless barcode scanners, enabling sub-10ms data transmission over local Wi-Fi.',
-      'Created interactive visual floor maps utilizing canvas renderers to map optimal shelf-picking sequences dynamically.'
-    ],
-    liveUrl: '#logisync-wms-case',
-    systemFlow: ['Scanner read event', 'React Native sends WebSocket packet', 'Node.js triggers allocation logic', 'DB transaction updates row', 'Dashboard redraws floor status']
+    label: 'DELIVERABLES',
+    value: '95+ Projects',
+    detail: '12 live enterprise brands & ThemeForest builds',
+    accent: 'emerald' as const,
   },
   {
-    id: 'omnipos-retail',
-    title: 'OmniPOS Real-Time Point of Sale',
-    description: 'An offline-resilient, multi-terminal retail point of sale system offering ultra-fast checkout billing with peripheral hardware integration.',
-    category: 'POS',
-    techStack: ['React', 'Electron', 'SQLite', 'MongoDB', 'Node.js', 'Tailwind CSS', 'WebUSB API'],
-    metrics: [
-      { label: 'Checkout Latency', value: '<80ms', description: 'Instant item lookup and invoice generation' },
-      { label: 'Offline Resilience', value: '100%', description: 'Continues printing receipts without internet' },
-      { label: 'Terminals Managed', value: '500+', description: 'Active retail client workstations' }
-    ],
-    details: [
-      'Engineered a background delta-sync protocol using SQLite locally and MongoDB in the cloud, resolving audit collisions automatically.',
-      'Integrated physical receipt printers, barcode readers, and weight scales using the WebUSB API and custom Node.js serial bindings in Electron.',
-      'Optimized the cash register interface for touchscreen operators, implementing intensive keystroke hotkeys reducing checkout loops by 4 steps.'
-    ],
-    liveUrl: '#omnipos-case',
-    systemFlow: ['Barcode keyboard trigger', 'Electron scans local SQLite db', 'UI updates invoice state', 'Hardware print signal via USB', 'Background delta-sync queues cloud update']
-  }
+    label: 'PLATFORMS',
+    value: 'Web · Android · Desktop',
+    detail: 'Next.js, Laravel, Capacitor & Electron apps',
+    accent: 'violet' as const,
+  },
+  {
+    label: 'AVAILABILITY',
+    value: 'Remote Ready',
+    detail: 'Full-time · Night Shift 7 PM – 2 AM BD',
+    accent: 'pink' as const,
+  },
 ];
 
-export const EXPERIENCE_DATA: Experience[] = [
+export const CORE_SKILL_GROUPS: SkillGroup[] = [
+  {
+    id: 'fullstack',
+    title: 'Full-Stack Development',
+    category: 'backend',
+    accent: 'cyan',
+    spanWide: true,
+    subtitle: 'Modern SSR web platforms, React SPAs, and scalable Laravel / Node.js REST APIs',
+    items: ['Next.js', 'React + Vite', 'Laravel', 'Node.js'],
+  },
+  {
+    id: 'cross-platform',
+    title: 'Cross-Platform Apps',
+    category: 'platform',
+    accent: 'violet',
+    subtitle: 'Android mobile applications and cross-platform POS desktop suites',
+    items: ['Capacitor (Android Apps)', 'Electron (Desktop Apps)'],
+  },
+  {
+    id: 'frontend',
+    title: 'Frontend Styling & UI',
+    category: 'frontend',
+    accent: 'pink',
+    subtitle: 'Design-faithful component systems, utility-first UI & BEM CSS architecture',
+    items: ['Tailwind CSS', 'Bootstrap', 'Sass (BEM Method)', 'HTML5', 'CSS3'],
+  },
+  {
+    id: 'server',
+    title: 'Server & Deployment',
+    category: 'backend',
+    accent: 'emerald',
+    subtitle: 'End-to-end production cloud hosting, reverse proxies & automated delivery',
+    items: ['Linux', 'NGINX', 'Cloud Hosting', 'CI/CD Pipelines'],
+  },
+  {
+    id: 'databases',
+    title: 'Databases',
+    category: 'backend',
+    accent: 'cyan',
+    subtitle: 'Relational and document data modeling for high-throughput commerce',
+    items: ['MySQL', 'PostgreSQL', 'MongoDB'],
+  },
+  {
+    id: 'architecture',
+    title: 'Architecture & Performance',
+    category: 'frontend',
+    accent: 'emerald',
+    spanWide: true,
+    subtitle: 'Speed, technical SEO, Core Web Vitals & clean RESTful API integration',
+    items: [
+      'Responsive Design',
+      'UI/UX Engineering',
+      'Performance Optimization',
+      'SEO & Core Web Vitals',
+      'RESTful APIs',
+    ],
+  },
+  {
+    id: 'workflow',
+    title: 'Workflow & Pixel Quality',
+    category: 'platform',
+    accent: 'violet',
+    subtitle: 'Exact Figma / PSD translation with clean Git collaboration workflows',
+    items: ['Figma / PSD to Code Pixel Perfection', 'Git & Version Control'],
+  },
+];
+
+export const ADDITIONAL_SKILLS: string[] = [
+  'Vue.js & Angular Development',
+  'WordPress Customization',
+  'Shopify Store Setup & Customization',
+  'POS & Pharmacy Software Systems',
+  'GSAP & Advanced Web Animations',
+  'CMS Integration',
+];
+
+export const EXPERIENCE_LIST: ExperienceItem[] = [
   {
     id: 'mediasoft',
-    role: 'Senior Full-Stack Developer & Technical Lead',
-    company: 'MediaSoft Ltd.',
+    role: 'Senior Full-Stack Web Developer',
+    company: 'Mediasoft Data Systems Limited',
+    companyUrl: 'https://mediasoftbd.com/',
+    companyLogo: '/images/brands/mediasoft-logo-white.png',
+    employmentType: 'Full-time · On-site',
     location: 'Dhaka, Bangladesh',
-    duration: '2021 - Present (5 Years)',
-    isMediaSoft: true,
-    highlights: [
-      'Oversee the core engineering and system scaling of Enterprise E-commerce, Warehouse Management (WMS), and POS suites.',
-      'Lead a development team of 8 engineers, instilling modern development cycles, strict static typing guidelines, and automated pull request integrations.',
-      'Successfully redesigned legacy database queries and schemas, improving general dashboard report generation times by over 200%.',
-      'Designed POS data synchronization networks that process over 100,000 invoices daily with robust offline recovery modes.'
+    duration: '2022 – Present',
+    isCurrent: true,
+    accent: 'emerald',
+    techStack: [
+      'Next.js',
+      'React + Vite',
+      'Laravel',
+      'Node.js',
+      'Vue.js',
+      'Angular',
+      'Capacitor',
+      'Electron',
+      'Linux / NGINX',
     ],
-    coreFocus: 'Enterprise Product Scaling, Offline Sync Systems, & Full-Stack Node/React Architecture'
+    highlights: [
+      'Architected and deployed enterprise-grade e-commerce platforms, POS systems, and pharmacy software solutions across web, Android, and desktop.',
+      'Engineered modern full-stack web applications using Next.js, React + Vite, and Laravel backends with RESTful API architecture.',
+      'Developed cross-platform Android mobile applications using Capacitor and desktop software using Electron.',
+      'Managed full server infrastructure, including cloud deployment, NGINX configuration, performance tuning, and CI/CD pipelines.',
+      'Transformed complex Figma and PSD design assets into responsive, accessible, and high-performance user interfaces.',
+      'Collaborated cross-functionally with backend engineers, project managers, and client stakeholders to deliver feature iterations on schedule.',
+    ],
   },
   {
-    id: 'technova',
-    role: 'Senior Software Engineer',
-    company: 'TechNova Solutions',
-    location: 'Dhaka, Bangladesh',
-    duration: '2019 - 2021 (2 Years)',
-    highlights: [
-      'Pioneered Vue.js and Ant Design inside custom SaaS projects to replace aging templates, resulting in a 40% speedup in developer feature delivery.',
-      'Architected high-throughput REST and GraphQL APIs handling complex dynamic business intelligence metrics and Excel/PDF data pipelines.',
-      'Integrated several national and global payment infrastructures including bKash, SSLCommerz, and Stripe, handling payments secure from fraud.'
+    id: 'kodesolution',
+    role: 'Front-End & Full-Stack Web Developer',
+    company: 'KodeSolution (ThemeMascot Portfolio)',
+    companyUrl: 'https://themeforest.net/user/thememascot/portfolio',
+    employmentType: 'Part-time / Contract · Remote',
+    location: 'Global ThemeForest Author Team',
+    duration: '2020 – 2025',
+    accent: 'violet',
+    techStack: [
+      'HTML5',
+      'React',
+      'Next.js',
+      'Angular',
+      'Vue.js',
+      'Sass (BEM)',
+      'Tailwind CSS',
+      'Bootstrap',
+      'GSAP',
     ],
-    coreFocus: 'SaaS Dashboard Engineering, Interactive Business Intelligence, & Payment Architectures'
+    highlights: [
+      'Designed and built 95+ commercial templates and web applications across HTML, React, Next.js, Angular, and Vue.js for ThemeForest elite authors.',
+      'Delivered production-ready code under aggressive timelines while maintaining strict Envato marketplace code quality standards.',
+      'Engineered fully responsive UI components utilizing modern CSS architectures (Sass/BEM, Tailwind CSS, Bootstrap).',
+      'Integrated interactive elements and dynamic animations using GSAP and JavaScript plugins.',
+      'Collaborated remotely with international team members across diverse time zones to deliver custom client projects.',
+    ],
   },
-  {
-    id: 'appdev',
-    role: 'Full-Stack Software Engineer',
-    company: 'AppDev Studio',
-    location: 'Dhaka, Bangladesh',
-    duration: '2018 - 2019 (1 Year)',
-    highlights: [
-      'Crafted mobile-responsive web applications for regional clients using React, Express, and Knex.js queries.',
-      'Developed responsive cross-platform mobile apps using React Native, uploading to both App Store and Play Store.',
-      'Secured backend endpoints, configured SSL certifications on Nginx, and managed server environments running under PM2.'
-    ],
-    coreFocus: 'Cross-platform Mobile Apps, SQL Database Design, & Server Provisioning'
-  }
 ];
 
-export const SKILL_CATEGORIES: SkillCategory[] = [
+export const MEDIASOFT_ECOM_PROJECTS: EcomProject[] = [
   {
-    category: 'Frontend & UI Frameworks',
-    description: 'Expertise in building high-performance SPAs and server-rendered dashboards with modern UI kit libraries.',
-    skills: [
-      { name: 'JavaScript / TypeScript', level: 98, years: 8 },
-      { name: 'React / Next.js', level: 96, years: 6 },
-      { name: 'Ant Design (Antd)', level: 95, years: 5 },
-      { name: 'Tailwind CSS', level: 95, years: 6 },
-      { name: 'Vue / Nuxt', level: 85, years: 3 },
-      { name: 'Angular', level: 78, years: 2 }
-    ]
+    id: 'sailor',
+    name: 'Sailor',
+    url: 'https://sailor.clothing/',
+    domain: 'sailor.clothing',
+    sector: 'Lifestyle & Fashion Retail',
+    bannerGradient: 'from-[#00f0ff]/25 via-[#0d111a] to-[#bd00ff]/25',
+    accent: 'cyan',
+    logo: '/images/brands/sailor.png',
   },
   {
-    category: 'Backend & Databases',
-    description: 'Constructing robust API endpoints, secure auth systems, transactional ledgers, and fast caching.',
-    skills: [
-      { name: 'Node.js / Express', level: 95, years: 7 },
-      { name: 'PostgreSQL / SQL', level: 92, years: 7 },
-      { name: 'Redis Caching', level: 88, years: 5 },
-      { name: 'Knex.js / Drizzle ORM', level: 90, years: 5 },
-      { name: 'MongoDB', level: 85, years: 5 },
-      { name: 'REST / GraphQL', level: 94, years: 6 }
-    ]
+    id: 'infinity',
+    name: 'Infinity Mega Mall',
+    url: 'https://infinitymegamall.com/',
+    domain: 'infinitymegamall.com',
+    sector: 'Multi-Brand Mega Retail',
+    bannerGradient: 'from-[#ff007a]/25 via-[#0d111a] to-[#bd00ff]/25',
+    accent: 'pink',
+    logo: '/images/brands/infinity.png',
   },
   {
-    category: 'Systems, Mobile & Desktop',
-    description: 'Developing outside standard web browsers — desktop shells, hardware bindings, and mobile platforms.',
-    skills: [
-      { name: 'React Native', level: 86, years: 4 },
-      { name: 'Electron', level: 88, years: 3 },
-      { name: 'SQLite (Local-first)', level: 90, years: 4 },
-      { name: 'Microservices Architectures', level: 85, years: 4 },
-      { name: 'Docker Containers', level: 82, years: 3 },
-      { name: 'WebSockets (Socket.io)', level: 92, years: 5 }
-    ]
-  }
+    id: 'wholesale-club',
+    name: 'Wholesale Club BD',
+    url: 'https://www.wholesaleclubltd.com/',
+    domain: 'wholesaleclubltd.com',
+    sector: 'Hypermarket & Club Retail',
+    bannerGradient: 'from-[#00f0ff]/25 via-[#0d111a] to-[#00ff66]/20',
+    accent: 'cyan',
+    logo: '/images/brands/wholesaleclub.png',
+  },
+  {
+    id: 'rise',
+    name: 'Rise Brand',
+    url: 'https://rise-brand.com/',
+    domain: 'rise-brand.com',
+    sector: 'Contemporary Apparel',
+    bannerGradient: 'from-[#00ff66]/20 via-[#0d111a] to-[#00f0ff]/20',
+    accent: 'emerald',
+    logo: '/images/brands/rise.png',
+  },
+  {
+    id: 'virgo',
+    name: 'Virgo BD',
+    url: 'https://virgobd.com/',
+    domain: 'virgobd.com',
+    sector: 'Fashion & Apparel',
+    bannerGradient: 'from-[#bd00ff]/25 via-[#0d111a] to-[#00f0ff]/20',
+    accent: 'violet',
+    logo: '/images/brands/virgo.png',
+  },
+  {
+    id: 'miclo',
+    name: 'Miclo Global',
+    url: 'https://micloglobal.com/',
+    domain: 'micloglobal.com',
+    sector: 'Global Apparel Brand',
+    bannerGradient: 'from-[#ff007a]/25 via-[#0d111a] to-[#00f0ff]/20',
+    accent: 'pink',
+    logo: '/images/brands/miclo.png',
+  },
+  {
+    id: 'qrius',
+    name: 'Qrius BD',
+    url: 'https://qriusbd.com/',
+    domain: 'qriusbd.com',
+    sector: 'Urban Fashion Store',
+    bannerGradient: 'from-[#00f0ff]/20 via-[#0d111a] to-[#ff007a]/20',
+    accent: 'cyan',
+    logo: '/images/brands/qrius.png',
+  },
+  {
+    id: 'stc-bazar',
+    name: 'STC Bazar',
+    url: 'https://www.stcbazar.com/',
+    domain: 'stcbazar.com',
+    sector: 'Online Retail Marketplace',
+    bannerGradient: 'from-[#00ff66]/25 via-[#0d111a] to-[#00f0ff]/25',
+    accent: 'emerald',
+    logo: '/images/brands/stc-bazar.png',
+  },
+  {
+    id: 'wowza',
+    name: 'Wowza BD',
+    url: 'https://wowzabd.com/',
+    domain: 'wowzabd.com',
+    sector: 'Lifestyle E-Commerce',
+    bannerGradient: 'from-[#00f0ff]/25 via-[#0d111a] to-[#00ff66]/25',
+    accent: 'emerald',
+    logo: '/images/brands/wowzabd-light.png',
+    darkLogoSurface: true,
+  },
+  {
+    id: 'bishworang',
+    name: 'Bishworang',
+    url: 'https://www.bishworang.com.bd/',
+    domain: 'bishworang.com.bd',
+    sector: 'Heritage Fashion House',
+    bannerGradient: 'from-[#bd00ff]/30 via-[#0d111a] to-[#ff007a]/25',
+    accent: 'violet',
+    logo: '/images/brands/bishowrong.webp',
+  },
+  {
+    id: 'porcelaina',
+    name: 'Porcelaina',
+    url: 'https://www.porcelaina.com.bd/',
+    domain: 'porcelaina.com.bd',
+    sector: 'Ceramics & Homeware',
+    bannerGradient: 'from-[#00f0ff]/25 via-[#0d111a] to-[#bd00ff]/20',
+    accent: 'cyan',
+    logo: '/images/brands/porcilina.png',
+  },
+  {
+    id: 'bugatti',
+    name: 'Bugatti Shoes BD',
+    url: 'https://bugattishoesbd.com/',
+    domain: 'bugattishoesbd.com',
+    sector: 'Premium Footwear',
+    bannerGradient: 'from-[#00ff66]/20 via-[#0d111a] to-[#00f0ff]/25',
+    accent: 'emerald',
+    logo: '/images/brands/bugati.webp',
+  },
 ];
 
-export const TESTIMONIALS_DATA: Testimonial[] = [
+export const MEDIASOFT_ECOSYSTEM_BRANDS: EcosystemBrand[] = [
+  { name: 'Lazz Pharma', sector: 'Pharmacy Chain', logo: '/images/brands/lazz-pharma.png' },
+  { name: 'Tamanna Pharmacy', sector: 'Pharmacy Systems', logo: '/images/brands/tamanna-pharmacy.png' },
+  { name: 'Good Life Pharmacy', sector: 'Healthcare Retail', logo: '/images/brands/good-life.png' },
+  { name: 'Apex', sector: 'Footwear & Retail', logo: '/images/brands/apex.png' },
+  { name: 'Yellow', sector: 'Apparel Enterprise', logo: '/images/brands/yellow.png' },
+  { name: 'Gadget & Gear', sector: 'Electronics Retail', logo: '/images/brands/gadget-and-gear.png' },
+  { name: 'Ecstasy', sector: 'Fashion Retail', logo: '/images/brands/ecstasy.png' },
+  { name: 'Richman', sector: 'Menswear Retail', logo: '/images/brands/rich-man.png' },
+];
+
+export const THEMEFOREST_PROJECTS: ThemeForestProject[] = [
   {
-    id: 'test-1',
-    name: 'M. S. Rahman',
-    role: 'Chief Technology Officer (CTO)',
-    company: 'MediaSoft Ltd.',
-    text: 'Kawser is an exceptional full-stack developer who transformed our core product architectures. His design of our offline POS synchronization protocol was a masterclass in resilient system engineering. He leads team cycles with professional composure and writes pristine code.'
+    id: 'structive',
+    name: 'Structive',
+    category: 'Business Consulting',
+    url: 'https://preview.themeforest.net/item/structive-business-consulting-html-template/full_screen_preview/60000219',
+    accentGradient: 'from-[#00f0ff] to-[#00ff66]',
+    accent: 'cyan',
+    stack: ['HTML5', 'Sass / BEM', 'Bootstrap', 'GSAP'],
   },
   {
-    id: 'test-2',
-    name: 'Anika Tabassum',
-    role: 'VP of Product Operations',
-    company: 'ApexScale Distribution',
-    text: 'Deploying our WMS platform across 12 warehouses in Dhaka was a daunting logistics hurdle. Kawser engineered a canvas-based layout tool and synchronized barcode flow that immediately boosted our picking speed by 35%. His technical insight is matched only by his delivery speed.'
+    id: 'techix',
+    name: 'Techix',
+    category: 'Technology Startup',
+    url: 'https://preview.themeforest.net/item/techix-technology-startup-agency-html-template/full_screen_preview/59694970',
+    accentGradient: 'from-[#bd00ff] to-[#00f0ff]',
+    accent: 'violet',
+    stack: ['HTML5', 'Responsive UI', 'JS Plugins', 'Animations'],
   },
   {
-    id: 'test-3',
-    name: 'David Jenkins',
-    role: 'Founding Engineer',
-    company: 'NovaCore SaaS Group',
-    text: 'We hired Kawser to build a complex financial billing panel with Next.js and Ant Design. The solution was delivered days ahead of schedule, completely typed in TypeScript, and thoroughly optimized. Over 90 successful projects under his belt is a stat you can immediately feel in his craftsmanship.'
-  }
+    id: 'beauta',
+    name: 'Beauta',
+    category: 'Spa & Beauty',
+    url: 'https://preview.themeforest.net/item/beauta-spa-beauty-html-template/full_screen_preview/57151644',
+    accentGradient: 'from-[#ff007a] to-[#bd00ff]',
+    accent: 'pink',
+    stack: ['HTML5', 'Sass', 'Pixel-Perfect UI', 'CSS3'],
+  },
+  {
+    id: 'taxix',
+    name: 'Taxix',
+    category: 'Online Taxi Service',
+    url: 'https://themeforest.net/item/taxix-online-taxi-service-html-template/51079010',
+    accentGradient: 'from-[#00ff66] to-[#00f0ff]',
+    accent: 'emerald',
+    stack: ['HTML5', 'Bootstrap', 'Interactive Booking UI'],
+  },
+  {
+    id: 'kologi',
+    name: 'Kologi',
+    category: 'Charity & Environment',
+    url: 'https://preview.themeforest.net/item/kologi-charity-environment-html5-template/full_screen_preview/33144591',
+    accentGradient: 'from-[#00ff66] to-[#00c48c]',
+    accent: 'emerald',
+    stack: ['HTML5', 'CSS3', 'BEM Architecture', 'Envato Standard'],
+  },
+  {
+    id: 'sparelax',
+    name: 'Sparelax',
+    category: 'Spa & Wellness',
+    url: 'https://preview.themeforest.net/item/sparelax-spa-beauty-html-template/full_screen_preview/57411639',
+    accentGradient: 'from-[#00f0ff] to-[#bd00ff]',
+    accent: 'cyan',
+    stack: ['HTML5', 'GSAP', 'Responsive Layout'],
+  },
+  {
+    id: 'parity',
+    name: 'Parity',
+    category: 'Charity & Nonprofit',
+    url: 'https://preview.themeforest.net/item/parity-charity-nonprofit-html-template/full_screen_preview/34630013',
+    accentGradient: 'from-[#bd00ff] to-[#ff007a]',
+    accent: 'violet',
+    stack: ['HTML5', 'Sass', 'Cross-Browser UI'],
+  },
 ];

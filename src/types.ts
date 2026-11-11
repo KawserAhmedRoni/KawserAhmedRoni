@@ -1,52 +1,75 @@
-export interface Project {
+export interface ProfileInfo {
+  name: string;
+  role: string;
+  companyName: string;
+  companyUrl: string;
+  companyLogoWhite: string;
+  cloudPosLogo: string;
+  location: string;
+  experienceLabel: string;
+  projectsLabel: string;
+  email: string;
+  phone: string;
+  cvUrl: string;
+  githubUrl: string;
+  linkedinUrl: string;
+  facebookUrl: string;
+  themeForestUrl: string;
+  summary: string;
+  availability: string[];
+}
+
+export type CyberAccent = 'cyan' | 'emerald' | 'violet' | 'pink';
+
+export interface SkillGroup {
   id: string;
   title: string;
-  description: string;
-  category: 'E-commerce' | 'WMS' | 'POS';
-  techStack: string[];
-  metrics: { label: string; value: string; description: string }[];
-  details: string[];
-  liveUrl?: string;
-  systemFlow: string[]; // Steps in the architecture flow for this project type
+  category: 'frontend' | 'backend' | 'platform';
+  accent: CyberAccent;
+  subtitle: string;
+  spanWide?: boolean;
+  items: string[];
 }
 
-export interface Experience {
+export interface ExperienceItem {
   id: string;
   role: string;
   company: string;
+  companyUrl: string;
+  companyLogo?: string;
+  employmentType: string;
   location: string;
   duration: string;
-  isMediaSoft?: boolean;
+  isCurrent?: boolean;
+  accent: CyberAccent;
+  techStack: string[];
   highlights: string[];
-  coreFocus: string;
 }
 
-export interface Skill {
+export interface EcomProject {
+  id: string;
   name: string;
-  level: number; // 0-100
-  years: number;
+  url: string;
+  domain: string;
+  sector: string;
+  bannerGradient: string;
+  accent: CyberAccent;
+  logo?: string;
+  darkLogoSurface?: boolean;
 }
 
-export interface SkillCategory {
+export interface ThemeForestProject {
+  id: string;
+  name: string;
   category: string;
-  description: string;
-  skills: Skill[];
+  url: string;
+  accentGradient: string;
+  accent: CyberAccent;
+  stack: string[];
 }
 
-export interface Testimonial {
-  id: string;
+export interface EcosystemBrand {
   name: string;
-  role: string;
-  company: string;
-  text: string;
-  avatarUrl?: string;
-}
-
-export interface ContactMessage {
-  id: string;
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  timestamp: string;
+  sector: string;
+  logo: string;
 }

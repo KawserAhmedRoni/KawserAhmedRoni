@@ -1,485 +1,489 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Terminal, ArrowRight, Download, FileText, CheckCircle2, User, Cpu, ShieldCheck, RefreshCw, Share2, Github, Linkedin, Facebook, Mail } from 'lucide-react';
-import { HERO_DATA } from '../data';
+import {
+  Download,
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Facebook,
+  ArrowRight,
+  User,
+  Layers,
+  Share2,
+  CheckCircle2,
+} from 'lucide-react';
+import { PROFILE_DATA, KEY_HIGHLIGHTS } from '../data';
+
+type CockpitTab = 'profile' | 'stack' | 'connect';
+
+const HIGHLIGHT_STYLES = {
+  cyan: {
+    bar: 'from-[#00f0ff] to-[#00ff66]',
+    label: 'text-[#00f0ff]',
+    borderHover: 'hover:border-[#00f0ff]/45',
+  },
+  emerald: {
+    bar: 'from-[#00ff66] to-[#00f0ff]',
+    label: 'text-[#00ff66]',
+    borderHover: 'hover:border-[#00ff66]/45',
+  },
+  violet: {
+    bar: 'from-[#bd00ff] to-[#00f0ff]',
+    label: 'text-[#bd00ff]',
+    borderHover: 'hover:border-[#bd00ff]/45',
+  },
+  pink: {
+    bar: 'from-[#ff007a] to-[#bd00ff]',
+    label: 'text-[#ff007a]',
+    borderHover: 'hover:border-[#ff007a]/45',
+  },
+} as const;
 
 export default function Hero() {
-  const [activeRightTab, setActiveRightTab] = useState<'scan' | 'terminal' | 'social'>('scan');
-  const [terminalHistory, setTerminalHistory] = useState<string[]>([
-    'Initializing secure connection to kawser_roni_core...',
-    'System status: 100% operational.',
-    'Type "help" or click the quick commands below to explore.'
-  ]);
-  const [terminalInput, setTerminalInput] = useState('');
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<CockpitTab>('profile');
 
-  const quickCommands = ['help', 'about', 'skills', 'metrics', 'clear'];
-
-  const executeCommand = (cmd: string) => {
-    const trimmed = cmd.trim().toLowerCase();
-    if (!trimmed) return;
-
-    let response: string[] = [];
-
-    switch (trimmed) {
-      case 'help':
-        response = [
-          `> ${cmd}`,
-          'Available commands:',
-          '  about    - Developer professional overview',
-          '  skills   - Main technologies and framework stack',
-          '  metrics  - Real metrics from 90+ approved projects',
-          '  clear    - Clear terminal stream'
-        ];
-        break;
-      case 'about':
-        response = [
-          `> ${cmd}`,
-          'Name: Kawser Ahmed Roni',
-          'Experience: 8+ Years in Enterprise Web/Mobile architectures',
-          'Specialty: High-scale E-commerce, POS, & WMS development',
-          'Tenure: 5 Years Core Engineer at MediaSoft, Dhaka'
-        ];
-        break;
-      case 'skills':
-        response = [
-          `> ${cmd}`,
-          'JavaScript Expertise:',
-          '  - Frontend: React, Next.js, Vue, Angular, Ant Design',
-          '  - Backend: Node.js, Express, PostgreSQL, Redis, MongoDB',
-          '  - Hybrid: React Native, Electron, SQLite'
-        ];
-        break;
-      case 'metrics':
-        response = [
-          `> ${cmd}`,
-          'Production Benchmarks:',
-          '  - 90+ Successful custom projects delivered',
-          '  - 100,000+ daily POS sales synced offline-to-cloud',
-          '  - 12 Enterprise Warehouses active with picking apps'
-        ];
-        break;
-      case 'clear':
-        setTerminalHistory([]);
-        setTerminalInput('');
-        return;
-      default:
-        response = [
-          `> ${cmd}`,
-          `Command not recognized: "${trimmed}". Type "help" for a list of valid options.`
-        ];
-    }
-
-    setTerminalHistory(prev => [...prev, ...response]);
-    setTerminalInput('');
-  };
-
-  useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [terminalHistory]);
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      executeCommand(terminalInput);
-    }
-  };
-
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/cv/cv.pdf';
-    link.download = 'Kawser_Ahmed_Roni_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    setTerminalHistory(prev => [
-      ...prev,
-      ' ',
-      '>> [SYSTEM INFO]: Requesting local target node download at "/cv/cv.pdf"...'
-    ]);
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-screen pt-28 pb-16 flex flex-col justify-center px-4 sm:px-8 bg-grid-pattern overflow-hidden"
+    <section
+      id="overview"
+      className="relative pt-22 pb-12 sm:pt-30 sm:pb-22 bg-[#05070a] bg-grid-pattern border-b border-[#151b2a] overflow-hidden"
     >
-      {/* Background neon glows */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-cyber-blue/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-cyber-violet/5 blur-[120px] pointer-events-none" />
+      {/* Signature Gradient Ambient Shapes */}
+      <div className="absolute -top-20 left-[12%] w-96 h-96 rounded-full bg-[#00f0ff]/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 right-[8%] w-[26rem] h-[26rem] rounded-full bg-[#bd00ff]/12 blur-[140px] pointer-events-none" />
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[32rem] h-72 rounded-full bg-[#00ff66]/7 blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        {/* Left Column: Heading & Introduction */}
-        <div className="lg:col-span-7 flex flex-col justify-center space-y-6 z-10" id="hero-intro">
-          
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center space-x-2 bg-cyber-blue/10 border border-cyber-blue/20 rounded-full px-4.5 py-1 w-fit"
-            id="hero-badge"
-          >
-            <span className="w-2 h-2 rounded-full bg-cyber-blue animate-pulse" />
-            <span className="text-[10px] sm:text-xs font-mono font-medium tracking-widest text-cyber-blue uppercase">
-              Available for Elite Engineering Projects
-            </span>
-          </motion.div>
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
+          {/* Left Column: Core Developer Identity & Actions */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-4"
+            transition={{ duration: 0.45 }}
+            className="lg:col-span-7 space-y-5 sm:space-y-6"
           >
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.12]">
-              Engineering Resilient <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue via-cyber-emerald to-cyber-violet text-glow-blue">
-                Enterprise Architectures
+            {/* Status Availability Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 rounded-full bg-[#00f0ff]/10 border border-[#00f0ff]/25 text-[#00f0ff] text-[10px] sm:text-[11px] font-mono font-semibold tracking-wide sm:tracking-wider uppercase max-w-full">
+              <span className="w-2 h-2 rounded-full bg-[#00ff66] shadow-[0_0_8px_#00ff66] animate-pulse shrink-0" />
+              <span className="leading-snug">
+                Open to Full-Time Remote · Night Shift Ready (7 PM – 2 AM BD)
               </span>
-            </h2>
-            <p className="text-base sm:text-lg font-sans text-gray-300 max-w-xl font-light leading-relaxed">
-              Hi, I'm <strong className="font-semibold text-white">{HERO_DATA.name}</strong>. {HERO_DATA.tagline}
-            </p>
+            </div>
+
+            {/* Name, Gradient Headline & Summary */}
+            <div className="space-y-2.5 sm:space-y-3">
+              <h1 className="text-[1.95rem] sm:text-5xl lg:text-[3.55rem] font-bold tracking-tight text-white leading-[1.1] sm:leading-[1.08]">
+                {PROFILE_DATA.name}
+                <span className="block mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#00ff66] to-[#bd00ff] text-glow-blue text-[1.25rem] sm:text-4xl lg:text-[2.35rem]">
+                  {PROFILE_DATA.role}
+                </span>
+              </h1>
+
+              <p className="text-[13.5px] sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                {PROFILE_DATA.summary}
+              </p>
+            </div>
+
+            {/* Primary Tech Chips */}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              {[
+                'Next.js',
+                'React + Vite',
+                'Laravel',
+                'Node.js',
+                'Capacitor (Android)',
+                'Electron (Desktop)',
+                'MySQL / PostgreSQL',
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 sm:px-3 rounded-lg bg-[#0d111a] border border-[#151b2a] hover:border-[#00f0ff]/45 text-[11px] sm:text-xs font-mono text-slate-200 transition-colors"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Primary CTA Row */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3.5 pt-1">
+              <button
+                onClick={scrollToContact}
+                className="col-span-2 sm:w-auto group inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#00ff66] hover:brightness-110 text-[#05070a] text-xs sm:text-sm font-mono font-bold shadow-[0_6px_26px_rgba(0,240,255,0.28)] transition-all cursor-pointer"
+              >
+                <span>Hire / Contact</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+
+              <a
+                href={PROFILE_DATA.cvUrl}
+                download="Kawser_Ahmed_Roni_CV.pdf"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-3 sm:px-5 sm:py-3.5 rounded-lg bg-[#080a0f] hover:bg-[#0d111a] border border-[#202b40] hover:border-[#00f0ff]/50 text-white hover:text-[#00f0ff] text-[11.5px] sm:text-sm font-mono font-semibold transition-all"
+              >
+                <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00f0ff] shrink-0" />
+                <span className="truncate">Download CV</span>
+              </a>
+
+              <a
+                href={PROFILE_DATA.companyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-3 sm:px-4 sm:py-3.5 rounded-lg bg-[#080a0f] hover:bg-[#0d111a] border border-[#151b2a] hover:border-[#bd00ff]/50 text-[11.5px] sm:text-sm font-mono font-semibold text-slate-300 hover:text-white transition-all"
+              >
+                <span>Mediasoft</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#bd00ff] shrink-0" />
+              </a>
+            </div>
+
+            {/* Quick Recruiter Contact Bar */}
+            <div className="pt-4 sm:pt-5 border-t border-[#151b2a] flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-2 text-[11px] sm:text-xs font-mono text-slate-400">
+              <a
+                href={`mailto:${PROFILE_DATA.email}`}
+                className="inline-flex items-center gap-1.5 hover:text-[#00f0ff] transition-colors max-w-full min-w-0"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#00f0ff] shrink-0" />
+                <span className="truncate">{PROFILE_DATA.email}</span>
+              </a>
+              <a
+                href={`tel:${PROFILE_DATA.phone}`}
+                className="inline-flex items-center gap-1.5 hover:text-[#00ff66] transition-colors shrink-0"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#00ff66] shrink-0" />
+                <span>{PROFILE_DATA.phone}</span>
+              </a>
+              <span className="inline-flex items-center gap-1.5 shrink-0">
+                <MapPin className="w-3.5 h-3.5 text-[#bd00ff] shrink-0" />
+                <span>{PROFILE_DATA.location}</span>
+              </span>
+            </div>
           </motion.div>
 
+          {/* Right Column: Interactive Dark Recruiter Cockpit */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap gap-4 pt-2"
-            id="hero-ctas"
+            transition={{ duration: 0.55, delay: 0.08 }}
+            className="lg:col-span-5"
           >
-            <button
-              onClick={() => handleScrollTo('contact')}
-              className="group flex items-center space-x-2 bg-gradient-to-r from-cyber-blue to-cyber-emerald hover:brightness-110 text-cyber-dark font-mono font-semibold text-xs sm:text-sm px-6 py-3.5 rounded shadow-[0_4px_20px_rgba(0,240,255,0.25)] transition-all duration-300"
-              id="hero-btn-contact"
-            >
-              <span>Initiate Project</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
+            <div className="relative max-w-md mx-auto">
+              {/* Outer Gradient Halo */}
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#00f0ff]/20 via-[#bd00ff]/15 to-[#00ff66]/20 blur-2xl pointer-events-none" />
 
-            <button
-              onClick={handleDownloadResume}
-              className="flex items-center space-x-2 bg-cyber-gray-950 hover:bg-cyber-gray-900 border border-cyber-gray-800 hover:border-cyber-blue/40 text-white hover:text-cyber-blue font-mono text-xs sm:text-sm px-6 py-3.5 rounded transition-all duration-300"
-              id="hero-btn-resume"
-            >
-              <Download className="w-4 h-4 text-cyber-blue" />
-              <span>Get Resume (PDF)</span>
-            </button>
+              <div className="relative rounded-2xl bg-[#080a0f] border border-[#151b2a] overflow-hidden shadow-[0_24px_70px_-15px_rgba(0,0,0,0.9)]">
+                {/* Tabbed Control Header */}
+                <div className="bg-[#0d111a] border-b border-[#151b2a] px-2.5 sm:px-3.5 py-2.5 flex items-center justify-between gap-2">
+                  <div className="grid grid-cols-3 sm:flex items-center gap-1 sm:gap-1.5 font-mono text-[10px] w-full sm:w-auto">
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab('profile')}
+                      className={`px-2 sm:px-2.5 py-2 sm:py-1.5 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                        activeTab === 'profile'
+                          ? 'bg-[#00f0ff]/12 border border-[#00f0ff]/40 text-white font-semibold'
+                          : 'text-slate-400 hover:text-white border border-transparent'
+                      }`}
+                    >
+                      <User className="w-3.5 h-3.5 text-[#00f0ff] shrink-0" />
+                      <span>PROFILE</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab('stack')}
+                      className={`px-2 sm:px-2.5 py-2 sm:py-1.5 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                        activeTab === 'stack'
+                          ? 'bg-[#00ff66]/12 border border-[#00ff66]/40 text-white font-semibold'
+                          : 'text-slate-400 hover:text-white border border-transparent'
+                      }`}
+                    >
+                      <Layers className="w-3.5 h-3.5 text-[#00ff66] shrink-0" />
+                      <span>STACK</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab('connect')}
+                      className={`px-2 sm:px-2.5 py-2 sm:py-1.5 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                        activeTab === 'connect'
+                          ? 'bg-[#bd00ff]/12 border border-[#bd00ff]/40 text-white font-semibold'
+                          : 'text-slate-400 hover:text-white border border-transparent'
+                      }`}
+                    >
+                      <Share2 className="w-3.5 h-3.5 text-[#bd00ff] shrink-0" />
+                      <span>CONNECT</span>
+                    </button>
+                  </div>
+
+                  <div className="hidden sm:flex items-center gap-1.5 shrink-0">
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                        activeTab === 'profile'
+                          ? 'bg-[#00f0ff]'
+                          : activeTab === 'stack'
+                            ? 'bg-[#00ff66]'
+                            : 'bg-[#bd00ff]'
+                      }`}
+                    />
+                    <span className="font-mono text-[9px] font-bold tracking-wider text-slate-300 uppercase">
+                      {activeTab === 'profile'
+                        ? 'READY_TO_HIRE'
+                        : activeTab === 'stack'
+                          ? 'FULL_STACK'
+                          : 'DIRECT_LINKS'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Cockpit Body */}
+                <div className="p-4 sm:p-5">
+                  <AnimatePresence mode="wait">
+                    {activeTab === 'profile' && (
+                      <motion.div
+                        key="profile-view"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.22 }}
+                        className="space-y-4"
+                      >
+                        {/* Dark Illuminated Studio Portrait */}
+                        <div className="relative aspect-[4/4.3] w-full rounded-xl border border-[#202b40] bg-[#05070a] overflow-hidden">
+                          {/* Gradient spotlight behind cutout */}
+                          <div className="absolute inset-0 bg-grid-pattern opacity-45 pointer-events-none" />
+                          <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-[#00f0ff]/18 blur-3xl pointer-events-none" />
+                          <div className="absolute bottom-0 right-0 w-56 h-56 rounded-full bg-[#bd00ff]/20 blur-3xl pointer-events-none" />
+
+                          {/* Corner HUD brackets */}
+                          <span className="absolute top-2.5 left-2.5 w-3 h-3 border-t-2 border-l-2 border-[#00f0ff]/60 z-10 pointer-events-none" />
+                          <span className="absolute top-2.5 right-2.5 w-3 h-3 border-t-2 border-r-2 border-[#00ff66]/60 z-10 pointer-events-none" />
+                          <span className="absolute bottom-2.5 left-2.5 w-3 h-3 border-b-2 border-l-2 border-[#bd00ff]/60 z-10 pointer-events-none" />
+                          <span className="absolute bottom-2.5 right-2.5 w-3 h-3 border-b-2 border-r-2 border-[#00f0ff]/60 z-10 pointer-events-none" />
+
+                          <img
+                            src="/images/formal-dark.png"
+                            alt="Kawser Ahmed Roni — Senior Full-Stack Web Developer"
+                            className="relative z-[1] w-full h-full object-cover object-top"
+                          />
+                        </div>
+
+                        {/* Current Employer Dark Footer */}
+                        <div className="rounded-xl bg-[#0d111a] border border-[#151b2a] p-3 sm:p-3.5 flex items-center justify-between gap-2.5 sm:gap-3">
+                          <div className="min-w-0">
+                            <p className="text-[10px] font-mono uppercase tracking-wider text-[#00ff66]">
+                              Current Role · 2022–Present
+                            </p>
+                            <p className="text-xs font-bold text-white truncate mt-0.5">
+                              {PROFILE_DATA.companyName}
+                            </p>
+                          </div>
+                          <a
+                            href={PROFILE_DATA.companyUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="shrink-0 px-2.5 py-1.5 sm:px-3 rounded-lg bg-[#05070a] border border-[#202b40] hover:border-[#00f0ff]/50 transition-colors"
+                            title="Visit Mediasoft Data Systems Limited"
+                          >
+                            <img
+                              src={PROFILE_DATA.companyLogoWhite}
+                              alt="Mediasoft Data Systems Limited"
+                              className="h-4 sm:h-5 w-auto object-contain"
+                            />
+                          </a>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === 'stack' && (
+                      <motion.div
+                        key="stack-view"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.22 }}
+                        className="space-y-3.5 font-mono"
+                      >
+                        <div className="rounded-xl bg-[#0d111a] border border-[#151b2a] p-3 sm:p-4 space-y-2.5">
+                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#00f0ff]">
+                            01 // Multi-Platform Core
+                          </p>
+                          <div className="grid grid-cols-2 gap-2 text-[11px] sm:text-xs">
+                            {[
+                              { k: 'Web SSR/SPA', v: 'Next.js · React' },
+                              { k: 'Backends', v: 'Laravel · Node.js' },
+                              { k: 'Mobile App', v: 'Capacitor Android' },
+                              { k: 'Desktop App', v: 'Electron Suite' },
+                            ].map((row) => (
+                              <div
+                                key={row.k}
+                                className="p-2 sm:p-2.5 rounded-lg bg-[#05070a] border border-[#151b2a] min-w-0"
+                              >
+                                <span className="block text-[9.5px] sm:text-[10px] text-slate-500 truncate">
+                                  {row.k}
+                                </span>
+                                <span className="font-semibold text-white block truncate">
+                                  {row.v}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="rounded-xl bg-[#0d111a] border border-[#151b2a] p-4 space-y-2">
+                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#00ff66]">
+                            02 // Databases &amp; Infra
+                          </p>
+                          <div className="flex flex-wrap gap-1.5 text-[11px]">
+                            {['MySQL', 'PostgreSQL', 'MongoDB', 'Linux', 'NGINX', 'CI/CD'].map(
+                              (tag) => (
+                                <span
+                                  key={tag}
+                                  className="px-2.5 py-1 rounded-md bg-[#05070a] border border-[#202b40] text-slate-200"
+                                >
+                                  {tag}
+                                </span>
+                              )
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="rounded-xl bg-[#00ff66]/8 border border-[#00ff66]/25 p-3.5 space-y-1.5">
+                          <div className="flex items-center gap-2 text-[11px] font-bold text-[#00ff66]">
+                            <Clock className="w-3.5 h-3.5" />
+                            <span>AVAILABILITY VERIFIED</span>
+                          </div>
+                          {PROFILE_DATA.availability.map((line) => (
+                            <div
+                              key={line}
+                              className="flex items-center gap-2 text-xs text-slate-200 font-sans"
+                            >
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#00ff66] shrink-0" />
+                              <span>{line}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === 'connect' && (
+                      <motion.div
+                        key="connect-view"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.22 }}
+                        className="space-y-4 font-mono"
+                      >
+                        <div className="rounded-xl bg-[#0d111a] border border-[#bd00ff]/30 p-3.5 text-center space-y-1">
+                          <p className="text-[10px] uppercase tracking-widest text-[#bd00ff]">
+                            Direct Developer Channels
+                          </p>
+                          <p className="text-xs font-sans text-slate-300">
+                            Reach out for remote roles, architecture, or project collaborations.
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <a
+                            href={PROFILE_DATA.githubUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group p-4 rounded-xl bg-[#0d111a] border border-[#151b2a] hover:border-[#00f0ff]/50 hover:bg-[#00f0ff]/5 flex flex-col items-center text-center gap-2 transition-all"
+                          >
+                            <Github className="w-5 h-5 text-slate-300 group-hover:text-[#00f0ff]" />
+                            <div>
+                              <p className="text-[9px] text-slate-500 uppercase">Code Repo</p>
+                              <p className="text-xs font-semibold text-white group-hover:text-[#00f0ff]">
+                                GitHub
+                              </p>
+                            </div>
+                          </a>
+
+                          <a
+                            href={PROFILE_DATA.linkedinUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group p-4 rounded-xl bg-[#0d111a] border border-[#151b2a] hover:border-[#bd00ff]/50 hover:bg-[#bd00ff]/5 flex flex-col items-center text-center gap-2 transition-all"
+                          >
+                            <Linkedin className="w-5 h-5 text-slate-300 group-hover:text-[#bd00ff]" />
+                            <div>
+                              <p className="text-[9px] text-slate-500 uppercase">Network</p>
+                              <p className="text-xs font-semibold text-white group-hover:text-[#bd00ff]">
+                                LinkedIn
+                              </p>
+                            </div>
+                          </a>
+
+                          <a
+                            href={PROFILE_DATA.facebookUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group p-4 rounded-xl bg-[#0d111a] border border-[#151b2a] hover:border-[#00ff66]/50 hover:bg-[#00ff66]/5 flex flex-col items-center text-center gap-2 transition-all"
+                          >
+                            <Facebook className="w-5 h-5 text-slate-300 group-hover:text-[#00ff66]" />
+                            <div>
+                              <p className="text-[9px] text-slate-500 uppercase">Social</p>
+                              <p className="text-xs font-semibold text-white group-hover:text-[#00ff66]">
+                                Facebook
+                              </p>
+                            </div>
+                          </a>
+
+                          <a
+                            href={`mailto:${PROFILE_DATA.email}`}
+                            className="group p-4 rounded-xl bg-[#0d111a] border border-[#151b2a] hover:border-[#ff007a]/50 hover:bg-[#ff007a]/5 flex flex-col items-center text-center gap-2 transition-all"
+                          >
+                            <Mail className="w-5 h-5 text-slate-300 group-hover:text-[#ff007a]" />
+                            <div>
+                              <p className="text-[9px] text-slate-500 uppercase">Direct Mail</p>
+                              <p className="text-xs font-semibold text-white group-hover:text-[#ff007a]">
+                                Email
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+
+                        <a
+                          href={`tel:${PROFILE_DATA.phone}`}
+                          className="w-full py-2.5 rounded-lg bg-[#0d111a] border border-[#202b40] hover:border-[#00ff66]/50 text-xs text-center text-slate-200 hover:text-[#00ff66] flex items-center justify-center gap-2 transition-all"
+                        >
+                          <Phone className="w-3.5 h-3.5 text-[#00ff66]" />
+                          <span>Call / WhatsApp: {PROFILE_DATA.phone}</span>
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
           </motion.div>
-
-          {/* Quick Stats Summary Tags */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-wrap gap-x-6 gap-y-3 pt-6 border-t border-cyber-gray-900"
-            id="hero-quick-specs"
-          >
-            <div className="flex items-center space-x-2">
-              <CheckCircle2 className="w-4.5 h-4.5 text-cyber-emerald" />
-              <span className="text-xs font-mono text-gray-400">8+ Years Core Dev</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <CheckCircle2 className="w-4.5 h-4.5 text-cyber-emerald" />
-              <span className="text-xs font-mono text-gray-400">90+ Approved Deployments</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <CheckCircle2 className="w-4.5 h-4.5 text-cyber-emerald" />
-              <span className="text-xs font-mono text-gray-400">MediaSoft Core Team Lead</span>
-            </div>
-          </motion.div>
-
         </div>
 
-        {/* Right Column: Interactive Cyber Cockpit / Biometric Scan & Developer Terminal */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-5 flex flex-col justify-center z-10"
-          id="hero-interactive-cockpit"
-        >
-          <div className="w-full bg-cyber-gray-950 border border-cyber-gray-800 rounded-lg overflow-hidden shadow-2xl">
-            {/* Interactive Tabbed Header Bar */}
-            <div className="bg-cyber-gray-900 border-b border-cyber-gray-800 px-4 py-2.5 flex items-center justify-between">
-              <div className="flex items-center space-x-1 sm:space-x-2 font-mono text-[10px]">
-                <button 
-                  onClick={() => setActiveRightTab('scan')}
-                  className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
-                    activeRightTab === 'scan' 
-                      ? 'bg-cyber-blue/10 border border-cyber-blue/35 text-white font-semibold' 
-                      : 'text-gray-500 hover:text-gray-350 hover:bg-cyber-gray-950/40 border border-transparent'
-                  }`}
-                >
-                  <User className="w-3.5 h-3.5 text-cyber-blue" />
-                  <span className="hidden xs:inline">BIOMETRIC_SCAN</span>
-                </button>
-                <button 
-                  onClick={() => setActiveRightTab('social')}
-                  className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
-                    activeRightTab === 'social' 
-                      ? 'bg-cyber-violet/10 border border-cyber-violet/35 text-white font-semibold' 
-                      : 'text-gray-500 hover:text-gray-350 hover:bg-cyber-gray-950/40 border border-transparent'
-                  }`}
-                >
-                  <Share2 className="w-3.5 h-3.5 text-cyber-violet" />
-                  <span className="hidden xs:inline">SOCIAL_NET</span>
-                </button>
-                <button 
-                  onClick={() => setActiveRightTab('terminal')}
-                  className={`px-3 py-1.5 rounded transition-all flex items-center space-x-1.5 ${
-                    activeRightTab === 'terminal' 
-                      ? 'bg-cyber-emerald/10 border border-cyber-emerald/35 text-white font-semibold' 
-                      : 'text-gray-500 hover:text-gray-350 hover:bg-cyber-gray-950/40 border border-transparent'
-                  }`}
-                >
-                  <Terminal className="w-3.5 h-3.5 text-cyber-emerald" />
-                  <span className="hidden xs:inline">RONI_SHELL</span>
-                </button>
-              </div>
-
-              {/* Status Indicator Pill */}
-              <div className="flex items-center space-x-1.5">
-                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
-                  activeRightTab === 'scan' ? 'bg-cyber-blue' : 
-                  activeRightTab === 'terminal' ? 'bg-cyber-emerald' : 'bg-cyber-violet'
-                }`} />
-                <span className={`font-mono text-[9px] uppercase font-bold tracking-wider ${
-                  activeRightTab === 'scan' ? 'text-cyber-blue' : 
-                  activeRightTab === 'terminal' ? 'text-cyber-emerald' : 'text-cyber-violet'
-                }`}>
-                  {activeRightTab === 'scan' ? 'LIVE_PORTRAIT' : 
-                   activeRightTab === 'terminal' ? 'CLI_ONLINE' : 'NET_LINKS'}
+        {/* Bottom 4 Key Metrics Cards */}
+        <div className="mt-8 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {KEY_HIGHLIGHTS.map((item) => {
+            const style = HIGHLIGHT_STYLES[item.accent];
+            return (
+              <div
+                key={item.label}
+                className={`relative rounded-xl bg-[#080a0f]/95 border border-[#151b2a] ${style.borderHover} p-3.5 sm:p-5 overflow-hidden transition-all`}
+              >
+                <div className={`absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r ${style.bar}`} />
+                <span className={`text-[9.5px] sm:text-[10px] font-mono font-bold uppercase tracking-widest ${style.label}`}>
+                  {item.label}
                 </span>
+                <p className="mt-1 sm:mt-1.5 text-base sm:text-xl font-bold text-white tracking-tight leading-snug">
+                  {item.value}
+                </p>
+                <p className="mt-1 text-[11px] sm:text-xs text-slate-400 leading-relaxed">{item.detail}</p>
               </div>
-            </div>
-
-            {/* Main Interactive Stage */}
-            <div className="relative">
-              <AnimatePresence mode="wait">
-                {activeRightTab === 'scan' ? (
-                  <motion.div
-                    key="biometric-scan-view"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.3 }}
-                    className="p-5 flex flex-col space-y-4"
-                  >
-                    {/* Portrait Scan Canvas */}
-                    <div className="relative aspect-square w-full max-w-[280px] mx-auto rounded-lg border border-cyber-blue/40 bg-cyber-dark/60 overflow-hidden group shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]" id="hologram-portrait-canvas">
-                      {/* Grid overlay */}
-                      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-transparent opacity-80 pointer-events-none" />
-                      
-                      {/* Dynamic laser scanner line */}
-                      <motion.div 
-                        initial={{ top: "0%" }}
-                        animate={{ top: ["0%", "100%", "0%"] }}
-                        transition={{ repeat: Infinity, duration: 3.5, ease: "linear" }}
-                        className="absolute left-0 w-full h-[2px] bg-cyber-blue/70 shadow-[0_0_12px_#00f0ff] z-10 pointer-events-none"
-                      />
-
-                      {/* Diagnostic HUD indicators */}
-                      <div className="absolute top-3 left-3 flex flex-col space-y-1 z-15 font-mono text-[8px] text-cyber-blue/80 bg-cyber-dark/45 border border-cyber-blue/15 p-1.5 rounded backdrop-blur-sm group-hover:opacity-0 transition-opacity duration-300">
-                        <span>SYS_RECON: ENABLED</span>
-                        <span>TARGET_NAME: KAWSER Ahmed RONI</span>
-                        <span>LATENCY_STABILITY: STABLE</span>
-                      </div>
-
-                      <div className="absolute bottom-3 right-3 flex flex-col space-y-0.5 z-15 font-mono text-[8px] text-cyber-emerald bg-cyber-dark/45 border border-cyber-emerald/15 p-1.5 rounded backdrop-blur-sm text-right group-hover:opacity-0 transition-opacity duration-300">
-                        <span>SYS_LOC: 23.8103° N, 90.4125° E</span>
-                        <span>DHAKA_NODE_STABLE</span>
-                      </div>
-
-                      {/* Actual developer portrait */}
-                      <img 
-                        src="/images/rony.png" 
-                        alt="Kawser Ahmed Roni - Senior Systems Engineer"
-                        className="w-full h-full object-cover object-top filter grayscale contrast-115 brightness-95 group-hover:grayscale-0 transition-all duration-700 scale-102 group-hover:scale-105"
-                        referrerPolicy="no-referrer"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400";
-                        }}
-                      />
-
-                      {/* Custom aesthetic viewport crosshairs */}
-                      <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t border-l border-cyber-blue" />
-                      <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t border-r border-cyber-blue" />
-                      <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b border-l border-cyber-blue" />
-                      <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b border-r border-cyber-blue" />
-                    </div>
-
-                    {/* HUD Scan Data Deck */}
-                    <div className="grid grid-cols-2 gap-3.5 font-mono text-[10px] text-gray-400 bg-cyber-gray-900/40 border border-cyber-gray-850 p-3 rounded">
-                      <div className="space-y-1.5">
-                        <div className="flex items-center space-x-1 text-cyber-blue font-semibold">
-                          <Cpu className="w-3.5 h-3.5" />
-                          <span>SPECS_CORE</span>
-                        </div>
-                        <div className="text-[9px] text-gray-500 leading-normal">
-                          Role: Senior Developer<br />
-                          Tenure: 8+ Yrs Exp<br />
-                          Expertise: Full-Stack
-                        </div>
-                      </div>
-                      <div className="space-y-1.5 border-l border-cyber-gray-850 pl-3.5">
-                        <div className="flex items-center space-x-1 text-cyber-emerald font-semibold">
-                          <ShieldCheck className="w-3.5 h-3.5" />
-                          <span>PROJECTS_DECK</span>
-                        </div>
-                        <div className="text-[9px] text-gray-500 leading-normal">
-                          Total Approved: 90+<br />
-                          Core Focus: Enterprise ERP<br />
-                          Status: Active Deploy
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ) : activeRightTab === 'terminal' ? (
-                  <motion.div
-                    key="terminal-shell-view"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col"
-                  >
-                    {/* Console Output Screen */}
-                    <div className="p-4 h-[220px] overflow-y-auto font-mono text-xs text-gray-300 space-y-1.5 flex flex-col" id="console-screen">
-                      {terminalHistory.map((line, i) => (
-                        <div 
-                          key={i} 
-                          className={`leading-relaxed whitespace-pre-wrap ${
-                            line.startsWith('>') ? 'text-cyber-blue font-semibold' : 
-                            line.startsWith('>>') ? 'text-cyber-emerald font-semibold' : 'text-gray-400'
-                          }`}
-                        >
-                          {line}
-                        </div>
-                      ))}
-                      <div ref={terminalEndRef} />
-                    </div>
-
-                    {/* Quick hotkey buttons for terminal */}
-                    <div className="px-4 py-2 bg-cyber-gray-900/60 border-t border-cyber-gray-900 flex flex-wrap gap-1.5 items-center">
-                      <span className="text-[9px] font-mono text-gray-500 uppercase mr-1">Hotkeys:</span>
-                      {quickCommands.map((cmd) => (
-                        <button
-                          key={cmd}
-                          onClick={() => executeCommand(cmd)}
-                          className="bg-cyber-gray-800 hover:bg-cyber-blue/20 border border-cyber-gray-700 hover:border-cyber-blue/50 text-[9px] text-gray-300 hover:text-cyber-blue font-mono px-2 py-0.5 rounded transition-all"
-                        >
-                          {cmd}()
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Console Input */}
-                    <div className="border-t border-cyber-gray-850 px-4 py-2.5 flex items-center bg-cyber-gray-950">
-                      <span className="text-cyber-emerald font-bold font-mono mr-2">&gt;</span>
-                      <input
-                        type="text"
-                        placeholder="Type 'help' and hit enter..."
-                        value={terminalInput}
-                        onChange={(e) => setTerminalInput(e.target.value)}
-                        onKeyDown={handleKeyPress}
-                        className="flex-1 bg-transparent border-none outline-none font-mono text-xs text-cyber-emerald placeholder-gray-650"
-                        id="terminal-input"
-                      />
-                    </div>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="social-links-view"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.3 }}
-                    className="p-5 flex flex-col space-y-4"
-                  >
-                    {/* Social Hub Header HUD */}
-                    <div className="relative w-full h-[100px] rounded border border-cyber-violet/30 bg-cyber-dark/40 overflow-hidden group flex flex-col justify-center items-center">
-                      <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
-                      <Share2 className="w-8 h-8 text-cyber-violet animate-pulse mb-1.5 z-10" />
-                      <span className="font-mono text-[10px] text-cyber-violet tracking-widest uppercase z-10">COMMUNICATION_CHANNELS</span>
-                      <span className="font-mono text-[8px] text-gray-500 z-10">SECURE TARGET NODE CONNECTIVITY</span>
-                      
-                      {/* Crosshairs */}
-                      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyber-violet" />
-                      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyber-violet" />
-                      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-cyber-violet" />
-                      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyber-violet" />
-                    </div>
-
-                    {/* Social Grid */}
-                    <div className="grid grid-cols-2 gap-3.5">
-                      <a
-                        href="https://github.com/KawserAhmedRoni"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-blue/50 hover:bg-cyber-blue/5 p-4 rounded transition-all group/link"
-                      >
-                        <Github className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-blue transition-colors mb-2" />
-                        <div className="font-mono">
-                          <p className="text-[8px] text-gray-500 uppercase leading-none">Code Repository</p>
-                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-blue transition-colors mt-1">GitHub</p>
-                        </div>
-                      </a>
-
-                      <a
-                        href="https://linkedin.com/in/kawser-ahmed-roni-91252b316"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-violet/50 hover:bg-cyber-violet/5 p-4 rounded transition-all group/link"
-                      >
-                        <Linkedin className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-violet transition-colors mb-2" />
-                        <div className="font-mono">
-                          <p className="text-[8px] text-gray-500 uppercase leading-none">Professional Net</p>
-                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-violet transition-colors mt-1">LinkedIn</p>
-                        </div>
-                      </a>
-
-                      <a
-                        href="https://www.facebook.com/kawserahmedroni.dev"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-emerald/50 hover:bg-cyber-emerald/5 p-4 rounded transition-all group/link"
-                      >
-                        <Facebook className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-emerald transition-colors mb-2" />
-                        <div className="font-mono">
-                          <p className="text-[8px] text-gray-500 uppercase leading-none">Connect Direct</p>
-                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-emerald transition-colors mt-1">Facebook</p>
-                        </div>
-                      </a>
-
-                      <a
-                        href="mailto:kawserahmedroni.dev@gmail.com"
-                        className="flex flex-col items-center justify-center text-center bg-cyber-gray-900/60 border border-cyber-gray-850 hover:border-cyber-pink/50 hover:bg-cyber-pink/5 p-4 rounded transition-all group/link"
-                      >
-                        <Mail className="w-5.5 h-5.5 text-gray-400 group-hover/link:text-cyber-pink transition-colors mb-2" />
-                        <div className="font-mono">
-                          <p className="text-[8px] text-gray-500 uppercase leading-none">Secure Mail</p>
-                          <p className="text-[11px] text-white font-semibold group-hover/link:text-cyber-pink transition-colors mt-1">Email</p>
-                        </div>
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        </motion.div>
-
+            );
+          })}
+        </div>
       </div>
     </section>
   );

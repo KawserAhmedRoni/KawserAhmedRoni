@@ -1,9 +1,7 @@
-<img width="100%" src="https://cdn.dribbble.com/userupload/16110610/file/original-ad4a6b1dcb1f453d0156f72f2f6920aa.jpg?resize=1600x914" alt="Banner" />
-
 <h1 align="center"><b>Kawser Ahmed Roni</b></h1>
 <p align="center">
-  <b>Senior Full-Stack Developer & Systems Architect</b><br />
-  Specializing in High-Concurrency Systems, Offline-Resilient Sync protocols, and Enterprise Product Scaling.
+  <b>Senior Full-Stack Web Developer at Mediasoft Data Systems Limited</b><br />
+  Nearly 7 Years Experience (Since 2020) · 95+ Live &amp; Marketplace Projects · Web, Android (Capacitor) &amp; Desktop (Electron)
 </p>
 
 <p align="center">
@@ -14,66 +12,66 @@
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=kawserahmedrony&label=Profile%20Views&color=0e75b6&style=flat-square" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=KawserAhmedRoni&label=Profile%20Views&color=0e75b6&style=flat-square" alt="Profile Views" />
 </p>
 
 ---
 
-### 🚀 Professional Overview
+### Professional Overview
 
-Dedicated and system-focused **Senior Full-Stack Developer & Technical Lead** with **8+ years** of hands-on experience designing, scaling, and maintaining enterprise web applications, localized hardware integrations, and real-time data sync environments. Currently spearheading core product architectures at **MediaSoft Data Systems Limited**, overseeing high-throughput ERP suite systems, WMS platforms, and offline-capable retail point-of-sale systems.
+Senior Full-Stack Web Developer with nearly **7 years** of professional experience since **2020**, specializing in architecting high-performance web applications, cross-platform mobile/desktop apps, and enterprise e-commerce systems. Proven track record delivering **95+ marketplace and enterprise projects** across **Next.js, Laravel, React + Vite, Node.js, Capacitor (Android), and Electron (Desktop)** with end-to-end Linux/NGINX server deployment.
 
-- 🏢 **Current Role:** Technical Lead at [MediaSoft Data Systems Limited](https://mediasoftbd.com/)
-- ⚡ **Core Competencies:** High-concurrency Node.js/React architectures, offline database syncing, local USB hardware integrations.
-- 📦 **Key Deliverables:** Successfully deployed systems running across 12+ enterprise warehouses and 500+ active retail terminals.
-
----
-
-### 🛠️ Tech Stack & Skill Matrix
-
-| Category | Technologies & Tools | Level | Experience |
-| :--- | :--- | :---: | :---: |
-| **Frontend & UI Frameworks** | TypeScript, React, Next.js, Vue, Angular, Ant Design, Tailwind CSS, Sass, Bootstrap, GSAP, jQuery | **Expert** | 8+ Years |
-| **Backend & Databases** | Node.js, Express, PostgreSQL, Redis Caching, Knex.js, Drizzle ORM, MongoDB, REST/GraphQL | **Advanced** | 7+ Years |
-| **Systems & Hardware** | Electron Desktop, React Native Mobile, SQLite (Local-first), WebUSB API, Docker, PM2, Nginx | **Expert** | 5+ Years |
+- **Current Role:** Senior Full-Stack Web Developer at [Mediasoft Data Systems Limited](https://mediasoftbd.com/) (`2022 – Present`, Dhaka)
+- **Marketplace Track Record:** Global ThemeForest Author Team at [KodeSolution (ThemeMascot)](https://themeforest.net/user/thememascot/portfolio) (`2020 – 2025`, Remote)
+- **Availability:** Open to Full-Time Remote Opportunities · Comfortable with Night Shift (`7:00 PM – 2:00 AM BD Time`)
 
 ---
 
-### 💼 Production Architectures (Featured Projects)
+### Tech Stack & Core Skills
 
-#### 🛒 ApexScale Enterprise E-commerce
-*A multi-tenant B2B/B2C marketplace engineered to sustain high volumes of concurrent traffic with real-time inventory adjustments.*
-- **Tech Stack:** Next.js, Node.js, PostgreSQL, Redis, Ant Design, Tailwind CSS, Docker.
-- **Key Metrics:** 99.99% Platform Uptime | 0.4s Page Load (Server-side rendering & Redis edge caching) | $15M+ Annual GMV.
-- **Key Actions:** Engineered event-driven catalog indexing to prevent database bottlenecks; implemented a Redis cluster cache dropping server response times from 350ms to 45ms.
-
-#### 📦 LogiSync Warehouse Management System (WMS)
-*Automated inventory and logistics solution supporting high-speed FIFO/LIFO tracking, barcode scanner operations, and optimal picking path sequences.*
-- **Tech Stack:** React, Node.js, Knex.js, PostgreSQL, React Native, Socket.io, PM2.
-- **Key Metrics:** +35% Picking Performance (via optimal routing heuristics) | 99.8% Inventory Sync Accuracy.
-- **Key Actions:** Designed a multi-threaded reconciliation queue preventing race conditions during simultaneous stock updates; built low-latency React Native companion app for wireless barcode scanners.
-
-#### 💻 OmniPOS Real-Time Point of Sale
-*An offline-resilient, multi-terminal retail POS system offering sub-80ms item lookup and checkout transactions with serial hardware integrations.*
-- **Tech Stack:** React, Electron, SQLite, MongoDB, Node.js, WebUSB API.
-- **Key Metrics:** 100% Offline Resilience (continues printing receipts without internet) | 500+ Active Terminals.
-- **Key Actions:** Engineered custom background delta-sync protocol using SQLite locally and MongoDB in the cloud, resolving audit collisions automatically; integrated serial scales, receipt printers, and scan devices via WebUSB.
+| Category | Technologies & Tools |
+| :--- | :--- |
+| **Full-Stack Development** | Next.js, React + Vite, Laravel, Node.js, RESTful APIs |
+| **Cross-Platform Apps** | Capacitor (Android Apps), Electron (Desktop Apps) |
+| **Frontend Styling & UI** | Tailwind CSS, Bootstrap, Sass (BEM Method), HTML5, CSS3, Vue.js, Angular |
+| **Databases** | MySQL, PostgreSQL, MongoDB |
+| **Server & DevOps** | Linux, NGINX, Cloud Hosting, CI/CD Pipelines, Git |
+| **Architecture & CMS** | Responsive Design, UI/UX, Core Web Vitals & SEO, Figma/PSD to Code, GSAP, WordPress, Shopify, POS & Pharmacy Systems |
 
 ---
 
-### 📈 GitHub Stats
+### Live E-Commerce Projects (Mediasoft Work)
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=kawserahmedrony&show_icons=true&locale=en&layout=compact&theme=tokyonight" alt="Top Languages" />
-  &nbsp;&nbsp;
-  <img src="https://github-readme-stats.vercel.app/api?username=kawserahmedrony&show_icons=true&locale=en&theme=tokyonight" alt="GitHub Stats" />
-</p>
+- **Sailor:** [sailor.clothing](https://sailor.clothing/)
+- **Infinity Mega Mall:** [infinitymegamall.com](https://infinitymegamall.com/)
+- **Wholesale Club BD:** [wholesaleclubltd.com](https://www.wholesaleclubltd.com/)
+- **Virgo BD:** [virgobd.com](https://virgobd.com/)
+- **Bishworang:** [bishworang.com.bd](https://www.bishworang.com.bd/)
+- **Porcelaina:** [porcelaina.com.bd](https://www.porcelaina.com.bd/)
+- **Miclo Global:** [micloglobal.com](https://micloglobal.com/)
+- **Bugatti Shoes BD:** [bugattishoesbd.com](https://bugattishoesbd.com/)
+- **Qrius BD:** [qriusbd.com](https://qriusbd.com/)
+- **STC Bazar:** [stcbazar.com](https://www.stcbazar.com/)
+- **Rise Brand:** [rise-brand.com](https://rise-brand.com/)
+- **Wowza BD:** [wowzabd.com](https://wowzabd.com/)
+
+### Featured ThemeForest Work (95+ Marketplace Projects)
+
+- [Structive — Business Consulting](https://preview.themeforest.net/item/structive-business-consulting-html-template/full_screen_preview/60000219)
+- [Techix — Technology Startup](https://preview.themeforest.net/item/techix-technology-startup-agency-html-template/full_screen_preview/59694970)
+- [Beauta — Spa &amp; Beauty](https://preview.themeforest.net/item/beauta-spa-beauty-html-template/full_screen_preview/57151644)
+- [Taxix — Online Taxi Service](https://themeforest.net/item/taxix-online-taxi-service-html-template/51079010)
+- [Kologi — Charity &amp; Environment](https://preview.themeforest.net/item/kologi-charity-environment-html5-template/full_screen_preview/33144591)
+- [Sparelax — Spa &amp; Wellness](https://preview.themeforest.net/item/sparelax-spa-beauty-html-template/full_screen_preview/57411639)
+- [Parity — Charity Nonprofit](https://preview.themeforest.net/item/parity-charity-nonprofit-html-template/full_screen_preview/34630013)
+- Full Catalog: [ThemeMascot Portfolio (95+ Projects)](https://themeforest.net/user/thememascot/portfolio)
 
 ---
 
-### 📬 Let's Connect!
+### Portfolio App & Contact
 
-- **Email:** kawserahmedroni.dev@gmail.com
+- **Email:** `kawserahmedroni.dev@gmail.com`
+- **Phone:** `01518318774`
 - **LinkedIn:** [linkedin.com/in/kawser-ahmed-roni-91252b316](https://linkedin.com/in/kawser-ahmed-roni-91252b316)
-- **Facebook:** [facebook.com/kawserahmedroni.dev](https://www.facebook.com/kawserahmedroni.dev)
-- **Portfolio App:** Run `npm run dev` to launch the local telemetry cockpit!
+- **GitHub:** [github.com/KawserAhmedRoni](https://github.com/KawserAhmedRoni)
+- **Run Locally:** `npm install && npm run dev`
